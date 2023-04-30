@@ -18,20 +18,20 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class)
-public class InteractionEndpointAuthenticatorTest {
+public class InteractionAuthenticatorTest {
 
     private static final HexFormat HEX = HexFormat.of();
 
     @Mock
     AppConfigClient mockAppConfigClient;
 
-    private InteractionEndpointAuthenticator authenticator;
+    private InteractionAuthenticator authenticator;
 
     @BeforeEach
     public void setup() {
         var publicKey = HEX.parseHex("6fc8a9c31cc8f58788307bce5e0fea2b2c5a1002401ea5cc66987471d0af0a6c");
         Mockito.when(mockAppConfigClient.getDiscordAppPublicKeyBytes()).thenReturn(publicKey);
-        authenticator = new InteractionEndpointAuthenticator(mockAppConfigClient);
+        authenticator = new InteractionAuthenticator(mockAppConfigClient);
     }
 
     @Test
