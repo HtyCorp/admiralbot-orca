@@ -15,7 +15,7 @@ public enum MessageComponentType {
 
     @JsonValue
     @SuppressWarnings("unused")
-    private final int apiValue;
+    public final int apiValue;
 
     MessageComponentType(int apiValue) {
         this.apiValue = apiValue;

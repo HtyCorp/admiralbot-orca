@@ -34,7 +34,7 @@ public record Channel(
         @JsonProperty("thread_metadata") ThreadMetadata threadMetadata,
         @JsonProperty("member") ThreadMember threadMember,
         @JsonProperty("default_auto_archive_duration") Integer defaultAutoArchiveDurationMinutes,
-        @JsonProperty("permissions") Bitfield<Permission> slashCommandInteractionPermissions,
+        @JsonProperty("permissions") NumberBitfield<Permission> slashCommandInteractionPermissions,
         @JsonProperty("flags") Long flags, // No wrapper: not currently useful
         @JsonProperty("total_message_sent") Long threadTotalMessageSent,
         @JsonProperty("available_tags") List<ForumTag> availableForumTags,

@@ -1,10 +1,12 @@
 package com.admiralbot.orca.model.discord.message;
 
 import com.admiralbot.orca.model.discord.Snowflake;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.net.URL;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Attachment(
         @JsonProperty(value = "id", required = true) Snowflake id,
         @JsonProperty("filename") String filename,

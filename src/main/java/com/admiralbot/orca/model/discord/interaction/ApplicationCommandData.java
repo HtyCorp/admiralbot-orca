@@ -1,10 +1,12 @@
 package com.admiralbot.orca.model.discord.interaction;
 
 import com.admiralbot.orca.model.discord.Snowflake;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record ApplicationCommandData(
         @JsonProperty(value = "id", required = true) Snowflake id,
         @JsonProperty(value = "name", required = true) String commandName,
@@ -12,5 +14,5 @@ public record ApplicationCommandData(
         @JsonProperty("resolved") ResolvedData resolvedData,
         @JsonProperty("options") List<ApplicationCommandInteractionDataOption> options,
         @JsonProperty("guild_id") Snowflake guildId,
-        @JsonProperty("targetId") Snowflake userOrMessageTargetId
+        @JsonProperty("target_id") Snowflake userOrMessageTargetId
 ) implements InteractionData {}

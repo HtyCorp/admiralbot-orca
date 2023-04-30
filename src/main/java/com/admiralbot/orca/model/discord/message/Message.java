@@ -1,6 +1,6 @@
 package com.admiralbot.orca.model.discord.message;
 
-import com.admiralbot.orca.model.discord.Bitfield;
+import com.admiralbot.orca.model.discord.NumberBitfield;
 import com.admiralbot.orca.model.discord.Snowflake;
 import com.admiralbot.orca.model.discord.User;
 import com.admiralbot.orca.model.discord.channel.Channel;
@@ -8,11 +8,13 @@ import com.admiralbot.orca.model.discord.channel.ChannelMention;
 import com.admiralbot.orca.model.discord.components.MessageComponent;
 import com.admiralbot.orca.model.discord.embed.Embed;
 import com.admiralbot.orca.model.discord.interaction.Interaction;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.Instant;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Message(
         @JsonProperty(value = "id", required = true) Snowflake id,
         @JsonProperty(value = "channel_id", required = true) Snowflake channelId,
@@ -35,7 +37,7 @@ public record Message(
         @JsonProperty(value = "type", required = true) MessageType type,
         // Skipping `activity`, `presence`: related to Rich Presence, not useful.
         @JsonProperty("message_reference") MessageReference messageReference,
-        @JsonProperty("flags") Bitfield<MessageFlag> flags,
+        @JsonProperty("flags") NumberBitfield<MessageFlag> flags,
         @JsonProperty("referenced_message") Message referencedMessage,
         @JsonProperty("interaction") Interaction interaction,
         @JsonProperty("thread") Channel thread,

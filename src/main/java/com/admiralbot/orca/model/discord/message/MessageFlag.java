@@ -1,8 +1,8 @@
 package com.admiralbot.orca.model.discord.message;
 
-import com.admiralbot.orca.model.discord.Bitfield;
+import com.admiralbot.orca.model.discord.NumberBitfield;
 
-public enum MessageFlag implements Bitfield.Flag {
+public enum MessageFlag implements NumberBitfield.Flag {
 
     CROSSPOSTED(0),
     IS_CROSSPOST(1),

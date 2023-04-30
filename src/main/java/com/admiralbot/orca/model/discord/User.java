@@ -1,7 +1,9 @@
 package com.admiralbot.orca.model.discord;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record User(
         @JsonProperty(value = "id", required = true) Snowflake id,
         @JsonProperty(value = "username", required = true) String username,
@@ -15,7 +17,7 @@ public record User(
         @JsonProperty("locale") String locale,
         @JsonProperty("verified") Boolean isVerified,
         @JsonProperty("email") String email,
-        @JsonProperty("flags") Long flags, // No wrapper type since we have no known use for this info
+        @JsonProperty("flags") Long flags, // No wrapper componentType since we have no known use for this info
         @JsonProperty("premium_type")  Integer nitroType, // Likewise ^
         @JsonProperty("public_flags") Long publicFlags // Same as `flags`, but non-private only I guess?
 ) {}

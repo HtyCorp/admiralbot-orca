@@ -1,7 +1,9 @@
 package com.admiralbot.orca.model.discord.interaction;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public enum ApplicationCommandOptionType {
 
     SUB_COMMAND(1),
