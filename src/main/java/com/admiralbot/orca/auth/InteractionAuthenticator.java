@@ -4,8 +4,6 @@ import com.admiralbot.orca.config.AppConfigClient;
 import org.bouncycastle.math.ec.rfc8032.Ed25519;
 
 import java.util.HexFormat;
-import java.util.Objects;
-import java.util.stream.Stream;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 

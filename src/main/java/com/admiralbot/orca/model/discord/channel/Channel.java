@@ -1,6 +1,8 @@
 package com.admiralbot.orca.model.discord.channel;
 
-import com.admiralbot.orca.model.discord.*;
+import com.admiralbot.orca.model.discord.NumberBitfield;
+import com.admiralbot.orca.model.discord.Snowflake;
+import com.admiralbot.orca.model.discord.User;
 import com.admiralbot.orca.model.discord.guild.Permission;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -2,7 +2,6 @@ package com.admiralbot.orca.handler;
 
 import com.admiralbot.orca.auth.InteractionAuthenticator;
 import com.admiralbot.orca.config.AppConfigClient;
-import com.admiralbot.orca.model.discord.channel.Channel;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;

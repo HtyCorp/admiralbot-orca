@@ -1,11 +1,12 @@
 package com.admiralbot.orca.model.discord.interaction;
 
-import com.admiralbot.orca.model.discord.*;
-import com.admiralbot.orca.model.discord.message.Attachment;
+import com.admiralbot.orca.model.discord.Snowflake;
+import com.admiralbot.orca.model.discord.User;
 import com.admiralbot.orca.model.discord.channel.Channel;
-import com.admiralbot.orca.model.discord.message.Message;
 import com.admiralbot.orca.model.discord.guild.Member;
 import com.admiralbot.orca.model.discord.guild.Role;
+import com.admiralbot.orca.model.discord.message.Attachment;
+import com.admiralbot.orca.model.discord.message.Message;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,7 +1,6 @@
 package com.admiralbot.orca.model.discord;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.math.BigInteger;
