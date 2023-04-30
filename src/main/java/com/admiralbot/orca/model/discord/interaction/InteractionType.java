@@ -1,9 +1,7 @@
 package com.admiralbot.orca.model.discord.interaction;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public enum InteractionType {
 
     PING(1),

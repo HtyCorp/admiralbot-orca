@@ -8,6 +8,7 @@ import com.admiralbot.orca.model.discord.channel.ChannelMention;
 import com.admiralbot.orca.model.discord.components.MessageComponent;
 import com.admiralbot.orca.model.discord.embed.Embed;
 import com.admiralbot.orca.model.discord.interaction.Interaction;
+import com.admiralbot.orca.model.discord.interaction.MessageInteraction;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -39,7 +40,7 @@ public record Message(
         @JsonProperty("message_reference") MessageReference messageReference,
         @JsonProperty("flags") NumberBitfield<MessageFlag> flags,
         @JsonProperty("referenced_message") Message referencedMessage,
-        @JsonProperty("interaction") Interaction interaction,
+        @JsonProperty("interaction") MessageInteraction interaction,
         @JsonProperty("thread") Channel thread,
         @JsonProperty("components") List<MessageComponent> components,
         // Skipping `sticker_items`, `stickers`: not relevant.
