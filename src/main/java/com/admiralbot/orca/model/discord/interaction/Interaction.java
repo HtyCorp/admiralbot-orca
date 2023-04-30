@@ -1,7 +1,7 @@
 package com.admiralbot.orca.model.discord.interaction;
 
-import com.admiralbot.orca.model.discord.NumberBitfield;
 import com.admiralbot.orca.model.discord.Snowflake;
+import com.admiralbot.orca.model.discord.StringBitfield;
 import com.admiralbot.orca.model.discord.User;
 import com.admiralbot.orca.model.discord.channel.Channel;
 import com.admiralbot.orca.model.discord.guild.Member;
@@ -44,7 +44,7 @@ public record Interaction(
    @JsonProperty(value = "token", required = true) String token,
    @JsonProperty(value = "version", required = true) Integer version,
    @JsonProperty("message") Message message,
-   @JsonProperty("app_permissions") NumberBitfield<Permission> appPermissions,
+   @JsonProperty("app_permissions") StringBitfield<Permission> appPermissionsInChannel,
    @JsonProperty("locale") String locale,
    @JsonProperty("guild_locale") String guildLocale
 ) {}

@@ -1,7 +1,7 @@
 package com.admiralbot.orca.model.discord.guild;
 
-import com.admiralbot.orca.model.discord.NumberBitfield;
 import com.admiralbot.orca.model.discord.Snowflake;
+import com.admiralbot.orca.model.discord.StringBitfield;
 import com.admiralbot.orca.model.discord.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -19,6 +19,6 @@ public record Member(
         @JsonProperty(value = "mute", required = true) Boolean isMute,
         @JsonProperty(value = "flags", required = true) Long flags, // No bitfield: these flags aren't relevant to us
         @JsonProperty("pending") Boolean isPending,
-        @JsonProperty("permissions") NumberBitfield<Permission> channelPermissions,
+        @JsonProperty("permissions") StringBitfield<Permission> channelPermissions,
         @JsonProperty("communication_disabled_until") Instant communicationDisabledUntil
 ) {}

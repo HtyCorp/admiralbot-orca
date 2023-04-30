@@ -7,7 +7,6 @@ import com.admiralbot.orca.model.discord.channel.Channel;
 import com.admiralbot.orca.model.discord.channel.ChannelMention;
 import com.admiralbot.orca.model.discord.components.MessageComponent;
 import com.admiralbot.orca.model.discord.embed.Embed;
-import com.admiralbot.orca.model.discord.interaction.Interaction;
 import com.admiralbot.orca.model.discord.interaction.MessageInteraction;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

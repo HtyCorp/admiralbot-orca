@@ -1,7 +1,7 @@
 package com.admiralbot.orca.model.discord.channel;
 
-import com.admiralbot.orca.model.discord.NumberBitfield;
 import com.admiralbot.orca.model.discord.Snowflake;
+import com.admiralbot.orca.model.discord.StringBitfield;
 import com.admiralbot.orca.model.discord.User;
 import com.admiralbot.orca.model.discord.guild.Permission;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,7 +36,7 @@ public record Channel(
         @JsonProperty("thread_metadata") ThreadMetadata threadMetadata,
         @JsonProperty("member") ThreadMember threadMember,
         @JsonProperty("default_auto_archive_duration") Integer defaultAutoArchiveDurationMinutes,
-        @JsonProperty("permissions") NumberBitfield<Permission> slashCommandInteractionPermissions,
+        @JsonProperty("permissions") StringBitfield<Permission> slashCommandInteractionPermissions,
         @JsonProperty("flags") Long flags, // No wrapper: not currently useful
         @JsonProperty("total_message_sent") Long threadTotalMessageSent,
         @JsonProperty("available_tags") List<ForumTag> availableForumTags,
