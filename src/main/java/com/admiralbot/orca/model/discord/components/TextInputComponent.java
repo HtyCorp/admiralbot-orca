@@ -1,0 +1,14 @@
+package com.admiralbot.orca.model.discord.components;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record TextInputComponent(
+        @JsonProperty(value = "type", required = true) MessageComponentType type,
+        @JsonProperty(value = "custom_id", required = true) String customId,
+        @JsonProperty(value = "style", required = true) TextInputStyle style,
+        @JsonProperty(value = "label", required = true) String label,
+        @JsonProperty("min_length") Integer minLength,
+        @JsonProperty("max_length") Integer maxLength,
+        @JsonProperty("required") Boolean isRequired,
+        @JsonProperty("placeholder") String placeholderText
+) implements MessageComponent {}

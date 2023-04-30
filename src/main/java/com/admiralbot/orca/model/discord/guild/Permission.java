@@ -1,10 +1,12 @@
-package com.admiralbot.orca.model.discord;
+package com.admiralbot.orca.model.discord.guild;
+
+import com.admiralbot.orca.model.discord.Bitfield;
 
 /**
  * Bitwise flags indicating Discord permissions.
  * <a href="https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags">Reference</a>
  */
-enum Permission {
+public enum Permission implements Bitfield.Flag {
 
     // Generated programmatically from above table HTML using Python ElementTree.
     //
@@ -288,6 +290,7 @@ enum Permission {
         this.flagBit = flagBit;
     }
 
+    @Override
     public int flagBit() {
         return flagBit;
     }

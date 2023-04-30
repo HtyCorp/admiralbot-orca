@@ -39,6 +39,7 @@ public class InteractionHandler implements RequestHandler<APIGatewayV2HTTPEvent,
         }
 
         // TODO: Continue from here
+        return null;
     }
 
     private APIGatewayV2HTTPResponse httpUnauthorizedResponse() {

@@ -1,5 +1,6 @@
-package com.admiralbot.orca.model.discord;
+package com.admiralbot.orca.model.discord.guild;
 
+import com.admiralbot.orca.model.discord.Snowflake;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

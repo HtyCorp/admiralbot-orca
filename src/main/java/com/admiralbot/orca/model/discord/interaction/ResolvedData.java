@@ -1,7 +1,11 @@
 package com.admiralbot.orca.model.discord.interaction;
 
 import com.admiralbot.orca.model.discord.*;
+import com.admiralbot.orca.model.discord.message.Attachment;
 import com.admiralbot.orca.model.discord.channel.Channel;
+import com.admiralbot.orca.model.discord.message.Message;
+import com.admiralbot.orca.model.discord.guild.Member;
+import com.admiralbot.orca.model.discord.guild.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;

@@ -1,6 +1,6 @@
 package com.admiralbot.orca.model.discord.channel;
 
-import com.admiralbot.orca.model.discord.Member;
+import com.admiralbot.orca.model.discord.guild.Member;
 import com.admiralbot.orca.model.discord.Snowflake;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
