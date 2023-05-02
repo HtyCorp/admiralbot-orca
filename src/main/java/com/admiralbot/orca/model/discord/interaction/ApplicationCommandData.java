@@ -1,10 +1,12 @@
 package com.admiralbot.orca.model.discord.interaction;
 
 import com.admiralbot.orca.model.discord.Snowflake;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record ApplicationCommandData(
         @JsonProperty(value = "id", required = true) Snowflake id,
         @JsonProperty(value = "name", required = true) String commandName,

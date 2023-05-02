@@ -1,0 +1,16 @@
+<Configuration status="WARN">
+    <Appenders>
+        <Lambda name="Lambda">
+            <PatternLayout>
+                <pattern>%d{ISO8601}{UTC} %X{AWSRequestId} %-5p %c{-3} - %m%n</pattern>
+            </PatternLayout>
+        </Lambda>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Lambda"/>
+        </Root>
+        <Logger name="com.admiralbot.orca" level="DEBUG" />
+        <Logger name="software.amazon.awssdk" level="INFO" />
+    </Loggers>
+</Configuration>

@@ -2,10 +2,12 @@ package com.admiralbot.orca.model.discord.channel;
 
 import com.admiralbot.orca.model.discord.Snowflake;
 import com.admiralbot.orca.model.discord.guild.Member;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.Instant;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record ThreadMember(
         @JsonProperty("id") Snowflake threadId,
         @JsonProperty("user_id") Snowflake userId,

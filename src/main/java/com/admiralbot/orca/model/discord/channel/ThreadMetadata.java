@@ -1,9 +1,11 @@
 package com.admiralbot.orca.model.discord.channel;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.Instant;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record ThreadMetadata(
         @JsonProperty(value = "archived", required = true) boolean isArchived,
         @JsonProperty(value = "auto_archive_duration", required = true) Integer autoArchiveDurationMinutes,

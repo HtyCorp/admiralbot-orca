@@ -1,7 +1,9 @@
 package com.admiralbot.orca.model.discord.components;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record TextInputComponent(
         @JsonProperty(value = "type", required = true) MessageComponentType type,
         @JsonProperty(value = "custom_id", required = true) String customId,

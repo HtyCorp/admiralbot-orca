@@ -4,11 +4,13 @@ import com.admiralbot.orca.model.discord.Snowflake;
 import com.admiralbot.orca.model.discord.StringBitfield;
 import com.admiralbot.orca.model.discord.User;
 import com.admiralbot.orca.model.discord.guild.Permission;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.Instant;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Channel(
         @JsonProperty(value = "id", required = true) Snowflake id,
         @JsonProperty(value = "type", required = true) ChannelType type,

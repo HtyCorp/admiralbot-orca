@@ -1,7 +1,9 @@
 package com.admiralbot.orca.model.discord.embed;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record EmbedField(
         @JsonProperty(value = "name", required = true) String name,
         @JsonProperty(value = "value", required = true) String value,

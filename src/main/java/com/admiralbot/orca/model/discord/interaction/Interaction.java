@@ -7,6 +7,7 @@ import com.admiralbot.orca.model.discord.channel.Channel;
 import com.admiralbot.orca.model.discord.guild.Member;
 import com.admiralbot.orca.model.discord.guild.Permission;
 import com.admiralbot.orca.model.discord.message.Message;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Interaction(
    @JsonProperty(value = "id", required = true) Snowflake id,
    @JsonProperty(value = "application_id", required = true) Snowflake applicationId,

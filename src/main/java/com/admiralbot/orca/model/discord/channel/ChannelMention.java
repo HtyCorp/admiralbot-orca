@@ -1,8 +1,10 @@
 package com.admiralbot.orca.model.discord.channel;
 
 import com.admiralbot.orca.model.discord.Snowflake;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record ChannelMention(
         @JsonProperty(value = "id", required = true) Snowflake id,
         @JsonProperty(value = "guild_id", required = true) Snowflake guildId,

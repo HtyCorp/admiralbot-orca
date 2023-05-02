@@ -1,10 +1,12 @@
 package com.admiralbot.orca.model.discord.components;
 
 import com.admiralbot.orca.model.discord.channel.ChannelType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record SelectMenuComponent(
         @JsonProperty(value = "type", required = true) MessageComponentType type,
         @JsonProperty(value = "custom_id", required = true) String customId,

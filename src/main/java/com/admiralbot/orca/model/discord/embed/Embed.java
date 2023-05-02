@@ -1,11 +1,13 @@
 package com.admiralbot.orca.model.discord.embed;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.net.URL;
 import java.time.Instant;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Embed(
         @JsonProperty("title") String title,
         // No enum: These are considered deprecated and likely to be removed in future API versions

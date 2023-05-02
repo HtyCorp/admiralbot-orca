@@ -3,11 +3,13 @@ package com.admiralbot.orca.model.discord.guild;
 import com.admiralbot.orca.model.discord.Snowflake;
 import com.admiralbot.orca.model.discord.StringBitfield;
 import com.admiralbot.orca.model.discord.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.Instant;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Member(
         @JsonProperty("user") User user,
         @JsonProperty("nick") String nickname,

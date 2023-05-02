@@ -7,10 +7,12 @@ import com.admiralbot.orca.model.discord.guild.Member;
 import com.admiralbot.orca.model.discord.guild.Role;
 import com.admiralbot.orca.model.discord.message.Attachment;
 import com.admiralbot.orca.model.discord.message.Message;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record ResolvedData(
         @JsonProperty("users") Map<Snowflake, User> users,
         @JsonProperty("members") Map<Snowflake, Member> members,

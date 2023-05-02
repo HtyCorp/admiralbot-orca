@@ -1,5 +1,7 @@
 plugins {
     id("java")
+    // Officially endorsed Lombok plugin for Gradle
+    id("io.freefair.lombok") version "8.0.1"
 }
 
 group = "com.admiralbot"
@@ -9,7 +11,24 @@ repositories {
     mavenCentral()
 }
 
+// Required since we have some special characters (e.g. in Discord locale list)
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+tasks.withType<Test> {
+    defaultCharacterEncoding = "UTF-8"
+}
+tasks.withType<Javadoc>{
+    options.encoding = "UTF-8"
+}
+
 dependencies {
+
+    /* Logging */
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+    runtimeOnly("org.apache.logging.log4j:log4j-core:2.20.0")
+
 
     /* AWS SDK V2 */
 
@@ -59,4 +78,13 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+val lambdaZip = tasks.register<Zip>("lambdaZip") {
+    archiveFileName.set("admiralbot-orca-lambda.zip")
+    from(tasks.compileJava)
+    from(tasks.processResources)
+    into("lib") {
+        from(configurations.runtimeClasspath.get())
+    }
 }
