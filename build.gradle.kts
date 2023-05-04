@@ -80,7 +80,7 @@ tasks.test {
     useJUnitPlatform()
 }
 
-val lambdaZip = tasks.register<Zip>("lambdaZip") {
+val packageLambda = tasks.register<Zip>("packageLambda") {
     archiveFileName.set("admiralbot-orca-lambda.zip")
     from(tasks.compileJava)
     from(tasks.processResources)
