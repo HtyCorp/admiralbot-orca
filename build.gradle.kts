@@ -11,6 +11,11 @@ repositories {
     mavenCentral()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 // Required since we have some special characters (e.g. in Discord locale list)
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
@@ -27,7 +32,8 @@ dependencies {
     /* Logging */
 
     // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
-    runtimeOnly("org.apache.logging.log4j:log4j-core:2.20.0")
+    implementation("org.apache.logging.log4j:log4j-api:2.20.0")
+    implementation("org.apache.logging.log4j:log4j-core:2.20.0")
 
     /* AWS SDK V2 */
 
