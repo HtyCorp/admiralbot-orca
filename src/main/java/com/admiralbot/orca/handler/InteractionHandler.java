@@ -39,6 +39,7 @@ public class InteractionHandler implements RequestHandler<APIGatewayV2HTTPEvent,
         // This validation would make more sense as an APIGW Lambda authorizer, but those cannot access request body.
         var signatureHex = input.getHeaders().get(SIGNATURE_HEADER);
         var timestamp = input.getHeaders().get(TIMESTAMP_HEADER);
+        log.debug("Security headers: signatureHex='{}', timestamp='{}'", signatureHex, timestamp);
         if (!interactionAuthenticator.authenticateTimestampedMessage(signatureHex, timestamp, input.getBody())) {
             return httpUnauthorized();
         }
