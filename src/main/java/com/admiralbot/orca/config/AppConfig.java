@@ -37,8 +37,17 @@ public class AppConfig {
         this.appConfigClient = appConfigClient;
     }
 
+    // TODO: This is a dumb thing to put in dynamic config since it can't even be rotated in apps once created.
+    // TODO: Change this to a fixed env var system - keep AppConfig code around, but not for this profile specifically.
     public AuthorizedDiscordAppKeysConfig getAuthorizedDiscordAppKeys() {
         return getValue("AuthorizedDiscordAppKeys", AUTHORIZED_KEYS_READER, AuthorizedDiscordAppKeysConfig.class);
+    }
+
+    /**
+     * There should be no reason to use this other than SnapStart init cleanup.
+     */
+    public void clearCache() {
+        versionCache.clear();
     }
 
     // Note: ObjectReader isn't generified, so it will just error on a bad class - not much safety there

@@ -9,6 +9,8 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
 import software.amazon.awssdk.http.urlconnection.UrlConnectionHttpClient;
 import software.amazon.awssdk.services.appconfigdata.AppConfigDataClient;
 
+import java.util.Map;
+
 @SuppressWarnings("unused")
 public class InteractionLambdaHandler extends DelegateHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
 
@@ -19,6 +21,37 @@ public class InteractionLambdaHandler extends DelegateHandler<APIGatewayV2HTTPEv
                 .build();
         var appConfig = new AppConfig(appConfigDataClient);
         var interactionAuthenticator = new InteractionAuthenticator(appConfig);
-        return new InteractionHandler(interactionAuthenticator);
+        var handler = new InteractionHandler(interactionAuthenticator);
+
+        // Run 'warmup' requests as part of SnapStart optimal init
+        warmUpPingRequest(handler);
+
+        // Config tokens are valid for 24 hours, so keeping the initial cache in the snapshot would be bad.
+        // (Best case: performance degradation after 24hrs; worst case: init errors after 24hrs.)
+        appConfig.clearCache();
+
+        return handler;
+    }
+
+    private void warmUpPingRequest(InteractionHandler handler) {
+        // This is a captured/valid signature copied exactly as-is (not editable because any change would invalidate signature)
+        var requestBody = "{\"application_id\":\"1101898412019957770\",\"id\":\"1104777861904212059\"," +
+                "\"token\":\"aW50ZXJhY3Rpb246MTEwNDc3Nzg2MTkwNDIxMjA1OTpveThZVE85Mk1CSW1yYXRDOFNvYVVqTmtwQVR2andUc1BvQT" +
+                "dZYllKNmJwREVkdVdXYWFpYXY1SlIwRDVScDdtT2hpZTg5N05xemhEY3EyaHRXUkhpdlBHUXU4aEpxbFZyNnRDNGFidzFjMFVnVkZB" +
+                "UlJWUWE2dHFoT3Y0b1ZHVQ\",\"type\":1,\"user\":{\"avatar\":\"46ec846ec006c096229a4f2bb7e597a1\"," +
+                "\"avatar_decoration\":null,\"discriminator\":\"7674\",\"display_name\":null,\"global_name\":null," +
+                "\"id\":\"307387893029142535\",\"public_flags\":4194304,\"username\":\"Mamish\"},\"version\":1}";
+        var request = APIGatewayV2HTTPEvent.builder()
+                .withVersion("2.0")
+                .withRawPath("/")
+                .withHeaders(Map.of(
+                        "content-length", "522",
+                        "x-signature-ed25519", "0d4702da582a865ea1a7ab3263befe298c7806a3f84cf4c212a82e6281c91a22" +
+                                "0540e65034ae903fb1be2f243937c8247767c30094fe99d0b705dde292a69c06",
+                        "x-signature-timestamp", "1683469968",
+                        "user-agent", "Discord-Interactions/1.0 (+https://discord.com)"
+                ))
+                .withBody(requestBody)
+                .build();
     }
 }
