@@ -1,10 +1,10 @@
 package com.admiralbot.orca.handler;
 
 import com.admiralbot.orca.auth.InteractionAuthenticator;
-import com.admiralbot.orca.model.discord.interaction.Interaction;
-import com.admiralbot.orca.model.discord.interaction.InteractionType;
-import com.admiralbot.orca.model.discord.interactionresponse.InteractionCallbackType;
-import com.admiralbot.orca.model.discord.interactionresponse.InteractionResponse;
+import com.admiralbot.orca.discord.model.interaction.Interaction;
+import com.admiralbot.orca.discord.model.interaction.InteractionType;
+import com.admiralbot.orca.discord.model.interactionresponse.InteractionCallbackType;
+import com.admiralbot.orca.discord.model.interactionresponse.InteractionResponse;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;

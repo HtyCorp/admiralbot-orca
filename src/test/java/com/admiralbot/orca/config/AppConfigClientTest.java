@@ -38,17 +38,25 @@ public class AppConfigClientTest {
 
     @Test
     public void testValidPublicKeyHexParse() throws Exception {
-        var keyHex = "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f";
+        var configKey = """
+                {
+                  "authorizedKeys": [
+                    {"publicKeyHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"}
+                  ]
+                }
+                """;
         when(mockHttpResponse.statusCode()).thenReturn(200);
-        when(mockHttpResponse.body()).thenReturn(keyHex);
+        when(mockHttpResponse.body()).thenReturn(configKey);
 
-        var keyBytes = appConfigClient.getDiscordAppPublicKeyBytes();
+        var keysConfig = appConfigClient.getAuthorizedDiscordAppKeys();
 
         var httpRequest = ArgumentCaptor.forClass(HttpRequest.class);
         verify(mockHttpClient).send(httpRequest.capture(), any());
-        assertEquals("http://localhost:2772/applications/AdmiralBot/environments/OrcaLambda/configurations/DiscordAppPublicKey",
+        assertEquals("http://localhost:2772/applications/AdmiralBot/environments/OrcaLambda/configurations/AuthorizedDiscordAppKeys",
                 httpRequest.getValue().uri().toString());
-        assertArrayEquals(new byte[] {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31},
-                keyBytes);
+        assertEquals(1,
+                keysConfig.authorizedKeys().size());
+        assertEquals("000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+                keysConfig.authorizedKeys().get(0).publicKeyHex());
     }
 }

@@ -29,7 +29,6 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
     runtimeOnly("org.apache.logging.log4j:log4j-core:2.20.0")
 
-
     /* AWS SDK V2 */
 
     // https://mvnrepository.com/artifact/software.amazon.awssdk/bom
@@ -61,7 +60,6 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.15.0")
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.0")
-
 
     /* Cryptography (signature handling) */
 
