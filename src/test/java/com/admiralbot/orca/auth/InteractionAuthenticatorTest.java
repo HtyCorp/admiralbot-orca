@@ -1,6 +1,6 @@
 package com.admiralbot.orca.auth;
 
-import com.admiralbot.orca.config.AppConfigClient;
+import com.admiralbot.orca.config.AppConfig;
 import com.admiralbot.orca.config.model.AuthorizedDiscordAppKeysConfig;
 import com.admiralbot.orca.config.model.AuthorizedKey;
 import org.bouncycastle.math.ec.rfc8032.Ed25519;
@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.security.SecureRandom;
@@ -27,16 +26,16 @@ public class InteractionAuthenticatorTest {
     private static final HexFormat HEX = HexFormat.of();
 
     @Mock
-    AppConfigClient mockAppConfigClient;
+    AppConfig mockAppConfig;
 
     private InteractionAuthenticator authenticator;
 
     @BeforeEach
     public void setup() {
-        when(mockAppConfigClient.getAuthorizedDiscordAppKeys()).thenReturn(new AuthorizedDiscordAppKeysConfig(
+        when(mockAppConfig.getAuthorizedDiscordAppKeys()).thenReturn(new AuthorizedDiscordAppKeysConfig(
                 List.of(new AuthorizedKey("6fc8a9c31cc8f58788307bce5e0fea2b2c5a1002401ea5cc66987471d0af0a6c"))
         ));
-        authenticator = new InteractionAuthenticator(mockAppConfigClient);
+        authenticator = new InteractionAuthenticator(mockAppConfig);
     }
 
     @Test

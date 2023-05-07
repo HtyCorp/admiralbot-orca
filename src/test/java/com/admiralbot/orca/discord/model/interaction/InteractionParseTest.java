@@ -1,9 +1,9 @@
 package com.admiralbot.orca.discord.model.interaction;
 
-import com.admiralbot.orca.discord.model.components.ButtonStyle;
-import com.admiralbot.orca.discord.model.components.MessageComponentType;
 import com.admiralbot.orca.discord.model.components.ActionRowComponent;
 import com.admiralbot.orca.discord.model.components.ButtonComponent;
+import com.admiralbot.orca.discord.model.components.ButtonStyle;
+import com.admiralbot.orca.discord.model.components.MessageComponentType;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
