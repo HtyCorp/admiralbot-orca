@@ -36,16 +36,18 @@ public class InteractionHandler implements RequestHandler<APIGatewayV2HTTPEvent,
     @Override
     public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent input, Context context) {
 
+        log.debug("Dump request:\n{}", input);
+
+        if (input.getIsBase64Encoded()) {
+            return httpBadRequest("Request is binary/encoded");
+        }
+
         // This validation would make more sense as an APIGW Lambda authorizer, but those cannot access request body.
         var signatureHex = input.getHeaders().get(SIGNATURE_HEADER);
         var timestamp = input.getHeaders().get(TIMESTAMP_HEADER);
         log.debug("Security headers: signatureHex='{}', timestamp='{}'", signatureHex, timestamp);
         if (!interactionAuthenticator.authenticateTimestampedMessage(signatureHex, timestamp, input.getBody())) {
             return httpUnauthorized();
-        }
-
-        if (input.getIsBase64Encoded()) {
-            return httpBadRequest("Request is binary/encoded");
         }
 
         Interaction interaction;
