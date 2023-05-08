@@ -6,11 +6,13 @@ import com.admiralbot.orca.handler.InteractionHandler;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
+import lombok.extern.log4j.Log4j2;
 import software.amazon.awssdk.http.urlconnection.UrlConnectionHttpClient;
 import software.amazon.awssdk.services.appconfigdata.AppConfigDataClient;
 
 import java.util.Map;
 
+@Log4j2
 @SuppressWarnings("unused")
 public class InteractionLambdaHandler extends DelegateHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
 
@@ -53,5 +55,8 @@ public class InteractionLambdaHandler extends DelegateHandler<APIGatewayV2HTTPEv
                 ))
                 .withBody(requestBody)
                 .build();
+
+        var response = handler.handleRequest(request, null);
+        log.debug("Warmup response:\n{}", response);
     }
 }
