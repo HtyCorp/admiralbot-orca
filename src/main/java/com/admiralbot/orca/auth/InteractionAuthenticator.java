@@ -1,10 +1,10 @@
 package com.admiralbot.orca.auth;
 
-import com.admiralbot.orca.config.AppConfig;
 import lombok.extern.log4j.Log4j2;
 import org.bouncycastle.math.ec.rfc8032.Ed25519;
 
 import java.util.HexFormat;
+import java.util.List;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -13,10 +13,10 @@ public class InteractionAuthenticator {
 
     private static final HexFormat HEX = HexFormat.of();
 
-    private final AppConfig appConfig;
+    private final List<byte[]> discordAppKeySet;
 
-    public InteractionAuthenticator(AppConfig appConfig) {
-        this.appConfig = appConfig;
+    public InteractionAuthenticator(List<String> discordAppKeySet) {
+        this.discordAppKeySet = discordAppKeySet.stream().map(HexFormat.of()::parseHex).toList();
     }
 
     public boolean authenticateTimestampedMessage(String signatureHex, String timestamp, String requestBody) {
@@ -26,11 +26,8 @@ public class InteractionAuthenticator {
 
         var signature = HEX.parseHex(signatureHex);
         var message = (timestamp + requestBody).getBytes(UTF_8);
-        var keysConfig = appConfig.getAuthorizedDiscordAppKeys();
 
-        return keysConfig.authorizedKeys().stream()
-                .map(key -> HEX.parseHex(key.publicKeyHex()))
-                .anyMatch(keyBytes -> authenticateMessage(signature, keyBytes, message));
+        return discordAppKeySet.stream().anyMatch(key -> authenticateMessage(signature, key, message));
     }
 
     private boolean authenticateMessage(byte[] signatureBytes, byte[] publicKeyBytes, byte[] messageBytes) {

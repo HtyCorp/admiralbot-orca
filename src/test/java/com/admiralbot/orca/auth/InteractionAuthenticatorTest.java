@@ -1,14 +1,10 @@
 package com.admiralbot.orca.auth;
 
-import com.admiralbot.orca.config.AppConfig;
-import com.admiralbot.orca.config.model.AuthorizedDiscordAppKeysConfig;
-import com.admiralbot.orca.config.model.AuthorizedKey;
 import org.bouncycastle.math.ec.rfc8032.Ed25519;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.security.SecureRandom;
@@ -18,24 +14,15 @@ import java.util.List;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class InteractionAuthenticatorTest {
-
-    private static final HexFormat HEX = HexFormat.of();
-
-    @Mock
-    AppConfig mockAppConfig;
 
     private InteractionAuthenticator authenticator;
 
     @BeforeEach
     public void setup() {
-        when(mockAppConfig.getAuthorizedDiscordAppKeys()).thenReturn(new AuthorizedDiscordAppKeysConfig(
-                List.of(new AuthorizedKey("6fc8a9c31cc8f58788307bce5e0fea2b2c5a1002401ea5cc66987471d0af0a6c"))
-        ));
-        authenticator = new InteractionAuthenticator(mockAppConfig);
+        authenticator = new InteractionAuthenticator(List.of("6fc8a9c31cc8f58788307bce5e0fea2b2c5a1002401ea5cc66987471d0af0a6c"));
     }
 
     @Test
@@ -79,8 +66,8 @@ public class InteractionAuthenticatorTest {
                 message, 0, message.length,
                 signature, 0);
 
-        System.out.println("Public key hex: " + HEX.formatHex(publicKey));
-        System.out.println("Signature hex: " + HEX.formatHex(signature));
+        System.out.println("Public key hex: " + HexFormat.of().formatHex(publicKey));
+        System.out.println("Signature hex: " + HexFormat.of().formatHex(signature));
     }
 
 }

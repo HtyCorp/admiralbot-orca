@@ -1,16 +1,15 @@
 package com.admiralbot.orca.handler.lambda;
 
 import com.admiralbot.orca.auth.InteractionAuthenticator;
-import com.admiralbot.orca.config.AppConfig;
 import com.admiralbot.orca.handler.InteractionHandler;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
 import lombok.extern.log4j.Log4j2;
-import software.amazon.awssdk.http.urlconnection.UrlConnectionHttpClient;
-import software.amazon.awssdk.services.appconfigdata.AppConfigDataClient;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Log4j2
 @SuppressWarnings("unused")
@@ -18,19 +17,14 @@ public class InteractionLambdaHandler extends DelegateHandler<APIGatewayV2HTTPEv
 
     @Override
     protected RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> createHandlerImpl() {
-        var appConfigDataClient = AppConfigDataClient.builder()
-                .httpClientBuilder(UrlConnectionHttpClient.builder())
-                .build();
-        var appConfig = new AppConfig(appConfigDataClient);
-        var interactionAuthenticator = new InteractionAuthenticator(appConfig);
+        var discordAppKeySet = Optional.ofNullable(System.getenv("DISCORD_APP_KEY_SET"))
+                .map(ks -> List.of(ks.split(",")))
+                .orElseThrow();
+        var interactionAuthenticator = new InteractionAuthenticator(discordAppKeySet);
         var handler = new InteractionHandler(interactionAuthenticator);
 
         // Run 'warmup' requests as part of SnapStart optimal init
         warmUpPingRequest(handler);
-
-        // Config tokens are valid for 24 hours, so keeping the initial cache in the snapshot would be bad.
-        // (Best case: performance degradation after 24hrs; worst case: init errors after 24hrs.)
-        appConfig.clearCache();
 
         return handler;
     }

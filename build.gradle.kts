@@ -43,8 +43,6 @@ dependencies {
     implementation("software.amazon.awssdk:dynamodb-enhanced:2.20.56")
     // https://mvnrepository.com/artifact/software.amazon.awssdk/ec2
     implementation("software.amazon.awssdk:ec2:2.20.56")
-    // https://mvnrepository.com/artifact/software.amazon.awssdk/appconfig
-    implementation("software.amazon.awssdk:appconfigdata:2.20.56")
 
     /* AWS SDK configuration */
 
