@@ -1,4 +1,4 @@
-package com.admiralbot.orca.discord.model.interactionresponse;
+package com.admiralbot.orca.discord.interactionresponse;
 
 /**
  * Another marker interface, for interaction callback data.

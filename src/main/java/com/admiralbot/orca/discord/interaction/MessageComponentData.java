@@ -1,4 +1,4 @@
-package com.admiralbot.orca.discord.model.interaction;
+package com.admiralbot.orca.discord.interaction;
 
 import com.admiralbot.orca.discord.model.components.MessageComponentType;
 import com.admiralbot.orca.discord.model.components.SelectOption;

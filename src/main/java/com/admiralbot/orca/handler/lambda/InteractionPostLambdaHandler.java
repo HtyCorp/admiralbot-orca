@@ -1,7 +1,7 @@
 package com.admiralbot.orca.handler.lambda;
 
 import com.admiralbot.orca.auth.InteractionAuthenticator;
-import com.admiralbot.orca.handler.InteractionHandler;
+import com.admiralbot.orca.handler.InteractionPostHandler;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Log4j2
 @SuppressWarnings("unused")
-public class InteractionLambdaHandler extends DelegateHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
+public class InteractionPostLambdaHandler extends DelegateHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
 
     @Override
     protected RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> createHandlerImpl() {
@@ -21,7 +21,7 @@ public class InteractionLambdaHandler extends DelegateHandler<APIGatewayV2HTTPEv
                 .map(ks -> List.of(ks.split(",")))
                 .orElseThrow();
         var interactionAuthenticator = new InteractionAuthenticator(discordAppKeySet);
-        var handler = new InteractionHandler(interactionAuthenticator);
+        var handler = new InteractionPostHandler(interactionAuthenticator);
 
         // Run 'warmup' requests as part of SnapStart optimal init
         warmUpPingRequest(handler);
@@ -29,7 +29,7 @@ public class InteractionLambdaHandler extends DelegateHandler<APIGatewayV2HTTPEv
         return handler;
     }
 
-    private void warmUpPingRequest(InteractionHandler handler) {
+    private void warmUpPingRequest(InteractionPostHandler handler) {
         // This is a captured/valid signature copied exactly as-is (not editable because any change would invalidate signature)
         var requestBody = "{\"application_id\":\"1101898412019957770\",\"id\":\"1104777861904212059\"," +
                 "\"token\":\"aW50ZXJhY3Rpb246MTEwNDc3Nzg2MTkwNDIxMjA1OTpveThZVE85Mk1CSW1yYXRDOFNvYVVqTmtwQVR2andUc1BvQT" +

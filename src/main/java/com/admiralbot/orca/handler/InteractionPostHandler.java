@@ -1,10 +1,10 @@
 package com.admiralbot.orca.handler;
 
 import com.admiralbot.orca.auth.InteractionAuthenticator;
-import com.admiralbot.orca.discord.model.interaction.Interaction;
-import com.admiralbot.orca.discord.model.interaction.InteractionType;
-import com.admiralbot.orca.discord.model.interactionresponse.InteractionCallbackType;
-import com.admiralbot.orca.discord.model.interactionresponse.InteractionResponse;
+import com.admiralbot.orca.discord.interaction.Interaction;
+import com.admiralbot.orca.discord.interaction.InteractionType;
+import com.admiralbot.orca.discord.interactionresponse.InteractionCallbackType;
+import com.admiralbot.orca.discord.interactionresponse.InteractionResponse;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2 // TODO: Maybe SLF4J?
-public class InteractionHandler implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
+public class InteractionPostHandler implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
 
     private static final String SIGNATURE_HEADER = "X-Signature-Ed25519";
     private static final String TIMESTAMP_HEADER = "X-Signature-Timestamp";
@@ -29,7 +29,7 @@ public class InteractionHandler implements RequestHandler<APIGatewayV2HTTPEvent,
 
     private final InteractionAuthenticator interactionAuthenticator;
 
-    public InteractionHandler(InteractionAuthenticator interactionAuthenticator) {
+    public InteractionPostHandler(InteractionAuthenticator interactionAuthenticator) {
         this.interactionAuthenticator = interactionAuthenticator;
     }
 

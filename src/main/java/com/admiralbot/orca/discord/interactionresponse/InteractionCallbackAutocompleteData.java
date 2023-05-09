@@ -1,5 +1,6 @@
-package com.admiralbot.orca.discord.model.interactionresponse;
+package com.admiralbot.orca.discord.interactionresponse;
 
+import com.admiralbot.orca.discord.model.command.ApplicationCommandOptionChoice;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 

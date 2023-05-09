@@ -1,4 +1,4 @@
-package com.admiralbot.orca.discord.model.interactionresponse;
+package com.admiralbot.orca.discord.interactionresponse;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
