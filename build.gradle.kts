@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("application")
     // Officially endorsed Lombok plugin for Gradle
     id("io.freefair.lombok") version "8.0.1"
 }
@@ -16,6 +17,14 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+val ops = sourceSets.create("ops") {
+    java.srcDir("src/ops/java")
+    resources.srcDir("src/ops/resources")
+    // Ops SourceSet uses main SourceSet output
+    compileClasspath += sourceSets.main.get().output
+    runtimeClasspath += sourceSets.main.get().output
+}
+
 // Required since we have some special characters (e.g. in Discord locale list)
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
@@ -25,6 +34,13 @@ tasks.withType<Test> {
 }
 tasks.withType<Javadoc>{
     options.encoding = "UTF-8"
+}
+
+val opsImplementation: Configuration by configurations.getting {
+    extendsFrom(configurations.implementation.get())
+}
+val opsRuntimeOnly: Configuration by configurations.getting {
+    extendsFrom(configurations.runtimeOnly.get())
 }
 
 dependencies {
@@ -38,16 +54,20 @@ dependencies {
     /* AWS SDK V2 */
 
     // https://mvnrepository.com/artifact/software.amazon.awssdk/bom
-    implementation("software.amazon.awssdk:bom:2.20.56")
+    implementation("software.amazon.awssdk:bom:2.20.65")
     // https://mvnrepository.com/artifact/software.amazon.awssdk/dynamodb-enhanced
-    implementation("software.amazon.awssdk:dynamodb-enhanced:2.20.56")
+    implementation("software.amazon.awssdk:dynamodb-enhanced:2.20.65")
     // https://mvnrepository.com/artifact/software.amazon.awssdk/ec2
-    implementation("software.amazon.awssdk:ec2:2.20.56")
+    implementation("software.amazon.awssdk:ec2:2.20.65")
+    // https://mvnrepository.com/artifact/software.amazon.awssdk/secretsmanager
+    implementation("software.amazon.awssdk:secretsmanager:2.20.65")
+    // https://mvnrepository.com/artifact/software.amazon.awssdk/sts
+    implementation("software.amazon.awssdk:sts:2.20.65")
 
     /* AWS SDK configuration */
 
     // https://mvnrepository.com/artifact/software.amazon.awssdk/aws-crt-client
-    implementation("software.amazon.awssdk:url-connection-client:2.20.56")
+    implementation("software.amazon.awssdk:url-connection-client:2.20.65")
 
     /* Lambda interface helpers */
 
@@ -91,4 +111,10 @@ val packageLambda = tasks.register<Zip>("packageLambda") {
     into("lib") {
         from(configurations.runtimeClasspath.get())
     }
+}
+
+val syncBetaGuildCommands = tasks.register<JavaExec>("syncBetaGuildCommands") {
+    classpath = ops.runtimeClasspath
+    mainClass.set("com.admiralbot.orca.ops.commandsync.SyncTask")
+    args = listOf("681515802135", "1101898412019957770", "1107685082640171048")
 }

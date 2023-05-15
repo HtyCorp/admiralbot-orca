@@ -10,6 +10,6 @@ public record ApplicationCommandInteractionDataOption(
         @JsonProperty(value = "type", required = true) ApplicationCommandOptionType type,
         // This can be any of 4 types, so it's tricky to deal with...
         @JsonProperty("value") ApplicationCommandOptionValue value,
-        @JsonProperty("options") ApplicationCommandInteractionDataOption groupOrSubcommandOptions,
+        @JsonProperty("options") ApplicationCommandInteractionDataOption subOptions,
         @JsonProperty("focused") Boolean autocompleteFocused
 ) {}

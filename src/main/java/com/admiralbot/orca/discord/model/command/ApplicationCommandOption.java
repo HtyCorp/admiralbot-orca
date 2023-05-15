@@ -16,7 +16,7 @@ public record ApplicationCommandOption(
         @JsonProperty(value = "name", required = true) String name,
         @JsonProperty("name_localizations") Map<Locale,String> nameLocalizations,
         @JsonProperty(value = "description", required = true) String description,
-        @JsonProperty(value = "description_localizations", required = true) Map<Locale,String> descriptionLocalizations,
+        @JsonProperty("description_localizations") Map<Locale,String> descriptionLocalizations,
         @JsonProperty("required") boolean required,
         @JsonProperty("choices") List<ApplicationCommandOptionChoice> choices,
         @JsonProperty("options") List<ApplicationCommandOption> subChoices,
