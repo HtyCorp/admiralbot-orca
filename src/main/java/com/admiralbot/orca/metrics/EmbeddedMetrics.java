@@ -42,7 +42,7 @@ public final class EmbeddedMetrics {
         numberMetric(name, dimensions, millisSince, Unit.MILLISECONDS);
     }
 
-    private static void numberMetric(String name, Map<String,String> dimensions, double value, Unit unit) {
+    public static void numberMetric(String name, Map<String,String> dimensions, double value, Unit unit) {
         var dimensionSet = new DimensionSet();
         dimensions.forEach((k,v) -> {
             try {

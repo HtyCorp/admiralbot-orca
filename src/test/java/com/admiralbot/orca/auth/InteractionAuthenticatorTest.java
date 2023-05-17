@@ -22,15 +22,16 @@ public class InteractionAuthenticatorTest {
 
     @BeforeEach
     public void setup() {
-        authenticator = new InteractionAuthenticator(List.of("6fc8a9c31cc8f58788307bce5e0fea2b2c5a1002401ea5cc66987471d0af0a6c"));
+        authenticator = new InteractionAuthenticator(false,
+                List.of("a38ccb99ea4dcf04fe252d1c19c7cec8fe04ec5161b9e782054d2dde4874e613"));
     }
 
     @Test
-    public void testValidStringBody() {
+    public void testAcceptValidSignedMessage() {
         // Generated using `createTestVectors()` below
-        var signature = "110542650f2f4d7afaa86a9ff225134962ecb91c8efd9dc01f68e1f543e70d8b" +
-                "f6cd10ac447a604f229084376c3ec9d09b6fc75c4a3111fe0e9d8b76036a0605";
-        var timestamp = "2023-04-30";
+        var signature = "3d6e3d7200912b11c808868bfabf63d349975eb04acd7ef0cfd3f37d2a85ddcc" +
+                "a87c56d3335f5cb8361ccf1e8cc4baf8228a9de6d12edbeb9e7495592d838305";
+        var timestamp = "1684281600";
         var body = "Example timestamped request body";
 
         var isValid = authenticator.authenticateTimestampedMessage(signature, timestamp, body);
@@ -39,11 +40,61 @@ public class InteractionAuthenticatorTest {
     }
 
     @Test
-    public void testStringBodySignedByWrongKey() {
-        // Same as above, but using new public key - should be considered invalid
-        var signature = "5fffdc6af173788b5458397d59f84eeddded3717efb2d5bd4ae75ca3579d83c5" +
-                "36910aedf9fab50e8524f52f0494ef1260a14e7882aa3e942cdd87352556dc06";
-        var timestamp = "2023-04-30";
+    public void testRejectsMessageWithOldTimestampIfSkewCheckEnabled() {
+        // Same as first test, but with clock skew check Enabled so that the same passing test should fail
+        authenticator = new InteractionAuthenticator(true,
+                List.of("a38ccb99ea4dcf04fe252d1c19c7cec8fe04ec5161b9e782054d2dde4874e613"));
+        var signature = "3d6e3d7200912b11c808868bfabf63d349975eb04acd7ef0cfd3f37d2a85ddcc" +
+                "a87c56d3335f5cb8361ccf1e8cc4baf8228a9de6d12edbeb9e7495592d838305";
+        var timestamp = "1684281600";
+        var body = "Example timestamped request body";
+
+        var isValid = authenticator.authenticateTimestampedMessage(signature, timestamp, body);
+
+        assertFalse(isValid);
+    }
+
+    @Test
+    public void testRejectsMessageIfInputsNull() {
+        var signature = "3d6e3d7200912b11c808868bfabf63d349975eb04acd7ef0cfd3f37d2a85ddcc" +
+                "a87c56d3335f5cb8361ccf1e8cc4baf8228a9de6d12edbeb9e7495592d838305";
+        var timestamp = "1684281600";
+        var body = "Example timestamped request body";
+
+        assertFalse(authenticator.authenticateTimestampedMessage(null, timestamp, body));
+        assertFalse(authenticator.authenticateTimestampedMessage(signature, null, body));
+        assertFalse(authenticator.authenticateTimestampedMessage(signature, timestamp, null));
+    }
+
+    @Test
+    public void testRejectsMessageSignedByWrongKey() {
+        // Same as first test, but uses a different signing key - should be considered invalid
+        var signature = "7827840d361ac2e57353f465955572cadaace27fab77d288c829153bc66f01b2" +
+                "79d551ac8dfc6e099d16df79698ca2bd01b5b54587cf93a2de6da9a8ba85b309";
+        var timestamp = "1684281600";
+        var body = "Example timestamped request body";
+
+        var isValid = authenticator.authenticateTimestampedMessage(signature, timestamp, body);
+
+        assertFalse(isValid);
+    }
+
+    @Test
+    public void testRejectsNonEpochTimestamp() {
+        var signature = "3d6e3d7200912b11c808868bfabf63d349975eb04acd7ef0cfd3f37d2a85ddcc" +
+                "a87c56d3335f5cb8361ccf1e8cc4baf8228a9de6d12edbeb9e7495592d838305";
+        var timestamp = "2023-05-17T00:00:00Z";
+        var body = "Example timestamped request body";
+
+        var isValid = authenticator.authenticateTimestampedMessage(signature, timestamp, body);
+
+        assertFalse(isValid);
+    }
+
+    @Test
+    public void testRejectsInvalidHexSignature() {
+        var signature = "blahblahasdf!$%#@%";
+        var timestamp = "1684281600";
         var body = "Example timestamped request body";
 
         var isValid = authenticator.authenticateTimestampedMessage(signature, timestamp, body);
@@ -60,7 +111,8 @@ public class InteractionAuthenticatorTest {
         Ed25519.generatePrivateKey(rand, privateKey);
         Ed25519.generatePublicKey(privateKey, 0, publicKey, 0);
 
-        var message = "2023-04-30Example timestamped request body".getBytes(UTF_8);
+        // arbitrary timestamp: 2023-05-17T00:00:00Z to epoch
+        var message = "1684281600Example timestamped request body".getBytes(UTF_8);
         var signature = new byte[64];
         Ed25519.sign(privateKey, 0,
                 message, 0, message.length,

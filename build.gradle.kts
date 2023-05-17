@@ -36,6 +36,8 @@ tasks.withType<Javadoc>{
     options.encoding = "UTF-8"
 }
 
+// `ops` is a special source set for admin/management tasks, e.g. updating Discord application commands.
+// It extends from `main` since the plan is to make `main` do the heavy lifting for things like secrets and API clients.
 val opsImplementation: Configuration by configurations.getting {
     extendsFrom(configurations.implementation.get())
 }
@@ -47,9 +49,13 @@ dependencies {
 
     /* Logging */
 
-    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
     implementation("org.apache.logging.log4j:log4j-api:2.20.0")
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
     implementation("org.apache.logging.log4j:log4j-core:2.20.0")
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j2-impl
+    // This is just for SDK and other libraries that depend on SLF4J
+    runtimeOnly("org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0")
 
     /* AWS SDK V2 */
 

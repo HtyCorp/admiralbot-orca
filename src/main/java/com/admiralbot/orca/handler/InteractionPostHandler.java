@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.log4j.Log4j2;
 
-@Log4j2 // TODO: Maybe SLF4J?
+@Log4j2
 public class InteractionPostHandler implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
 
     private static final String SIGNATURE_HEADER = "X-Signature-Ed25519";

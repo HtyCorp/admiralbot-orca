@@ -21,7 +21,7 @@ public class InteractionPostLambdaHandler extends DelegateHandler<APIGatewayV2HT
         var discordAppKeySet = Optional.ofNullable(System.getenv("DISCORD_APP_KEY_SET"))
                 .map(ks -> List.of(ks.split(",")))
                 .orElseThrow();
-        var interactionAuthenticator = new InteractionAuthenticator(discordAppKeySet);
+        var interactionAuthenticator = new InteractionAuthenticator(true, discordAppKeySet);
         var commandDispatcher = new CommandDispatcher();
         var handler = new InteractionPostHandler(interactionAuthenticator, commandDispatcher);
 
