@@ -77,6 +77,8 @@ dependencies {
     implementation("com.amazonaws:aws-lambda-java-events:3.11.1")
     // https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-log4j2
     implementation("com.amazonaws:aws-lambda-java-log4j2:1.5.1")
+    // https://mvnrepository.com/artifact/software.amazon.cloudwatchlogs/aws-embedded-metrics
+    implementation("software.amazon.cloudwatchlogs:aws-embedded-metrics:4.1.1")
 
     /* JSON */
 

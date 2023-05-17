@@ -1,8 +1,9 @@
 package com.admiralbot.orca.handler;
 
 import com.admiralbot.orca.auth.InteractionAuthenticator;
+import com.admiralbot.orca.commands.CommandDispatcher;
+import com.admiralbot.orca.discord.interaction.ApplicationCommandData;
 import com.admiralbot.orca.discord.interaction.Interaction;
-import com.admiralbot.orca.discord.interaction.InteractionType;
 import com.admiralbot.orca.discord.interactionresponse.InteractionCallbackType;
 import com.admiralbot.orca.discord.interactionresponse.InteractionResponse;
 import com.amazonaws.services.lambda.runtime.Context;
@@ -28,9 +29,11 @@ public class InteractionPostHandler implements RequestHandler<APIGatewayV2HTTPEv
     }
 
     private final InteractionAuthenticator interactionAuthenticator;
+    private final CommandDispatcher commandDispatcher;
 
-    public InteractionPostHandler(InteractionAuthenticator interactionAuthenticator) {
+    public InteractionPostHandler(InteractionAuthenticator interactionAuthenticator, CommandDispatcher commandDispatcher) {
         this.interactionAuthenticator = interactionAuthenticator;
+        this.commandDispatcher = commandDispatcher;
     }
 
     @Override
@@ -75,14 +78,13 @@ public class InteractionPostHandler implements RequestHandler<APIGatewayV2HTTPEv
     }
 
     private InteractionResponse getInteractionResponse(Interaction interaction) {
-
-        if (interaction.type() == InteractionType.PING) {
-            return InteractionResponse.builder()
+        return switch(interaction.type()) {
+            case PING -> InteractionResponse.builder()
                     .type(InteractionCallbackType.PONG)
                     .build();
-        }
-
-        throw new IllegalArgumentException("Non-PING payloads not implemented yet");
+            case APPLICATION_COMMAND -> commandDispatcher.dispatch(interaction, (ApplicationCommandData) interaction.data());
+            default -> throw new IllegalArgumentException("Non-PING payloads not implemented yet");
+        };
     }
 
     private APIGatewayV2HTTPResponse httpOkay(String msg) {

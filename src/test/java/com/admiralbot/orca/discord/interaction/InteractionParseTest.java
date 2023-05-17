@@ -1,8 +1,5 @@
-package com.admiralbot.orca.discord.model.interaction;
+package com.admiralbot.orca.discord.interaction;
 
-import com.admiralbot.orca.discord.interaction.Interaction;
-import com.admiralbot.orca.discord.interaction.InteractionType;
-import com.admiralbot.orca.discord.interaction.MessageComponentData;
 import com.admiralbot.orca.discord.model.components.ActionRowComponent;
 import com.admiralbot.orca.discord.model.components.ButtonComponent;
 import com.admiralbot.orca.discord.model.components.ButtonStyle;

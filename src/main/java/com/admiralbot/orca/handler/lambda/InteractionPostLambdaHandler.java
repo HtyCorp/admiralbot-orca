@@ -1,6 +1,7 @@
 package com.admiralbot.orca.handler.lambda;
 
 import com.admiralbot.orca.auth.InteractionAuthenticator;
+import com.admiralbot.orca.commands.CommandDispatcher;
 import com.admiralbot.orca.handler.InteractionPostHandler;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
@@ -21,7 +22,8 @@ public class InteractionPostLambdaHandler extends DelegateHandler<APIGatewayV2HT
                 .map(ks -> List.of(ks.split(",")))
                 .orElseThrow();
         var interactionAuthenticator = new InteractionAuthenticator(discordAppKeySet);
-        var handler = new InteractionPostHandler(interactionAuthenticator);
+        var commandDispatcher = new CommandDispatcher();
+        var handler = new InteractionPostHandler(interactionAuthenticator, commandDispatcher);
 
         // Run 'warmup' requests as part of SnapStart optimal init
         warmUpPingRequest(handler);
