@@ -1843,7 +1843,6 @@ java.util.concurrent.atomic.AtomicBoolean
 org.apache.logging.log4j.core.config.LoggerConfig$LoggerConfigPredicate
 org.apache.logging.log4j.core.config.LoggerConfig$Builder
 org.apache.logging.log4j.core.config.LoggerConfig$LevelAndRefs
-org.apache.logging.log4j.core.async.AsyncLoggerContext
 org.apache.logging.log4j.core.config.ReliabilityStrategyFactory
 org.apache.logging.log4j.core.config.plugins.visitors.PluginAttributeVisitor
 org.apache.logging.log4j.core.config.LoggerConfig$RootLogger$Builder
@@ -2440,9 +2439,6 @@ org.apache.logging.log4j.core.time.PreciseClock
 org.apache.logging.log4j.core.util.SystemClock
 org.apache.logging.log4j.core.config.AppenderControlArraySet
 org.apache.logging.log4j.core.impl.ReusableLogEventFactory
-org.apache.logging.log4j.core.async.ThreadNameCachingStrategy
-org.apache.logging.log4j.core.async.ThreadNameCachingStrategy$1
-org.apache.logging.log4j.core.async.ThreadNameCachingStrategy$2
 java.util.DualPivotQuicksort
 org.apache.logging.log4j.core.config.ReliabilityStrategy
 org.apache.logging.log4j.core.impl.LocationAwareLogEventFactory
@@ -2723,7 +2719,6 @@ org.apache.logging.log4j.core.filter.LevelMatchFilter
 org.apache.logging.log4j.core.layout.PatternSelector
 org.apache.logging.log4j.core.layout.LevelPatternSelector
 org.apache.logging.log4j.core.filter.LevelRangeFilter
-org.apache.logging.log4j.core.async.LinkedTransferQueueFactory
 org.apache.logging.log4j.core.net.ssl.StoreConfiguration
 org.apache.logging.log4j.core.net.ssl.AbstractKeyStoreConfiguration
 org.apache.logging.log4j.core.net.ssl.KeyStoreConfiguration
@@ -2735,7 +2730,6 @@ org.apache.logging.log4j.core.appender.mom.kafka.KafkaAppender
 org.apache.logging.log4j.core.appender.mom.jeromq.JeroMqAppender
 org.apache.logging.log4j.core.appender.mom.JmsAppender
 org.apache.logging.log4j.core.appender.rolling.action.IfNot
-org.apache.logging.log4j.core.async.JCToolsBlockingQueueFactory
 org.apache.logging.log4j.core.appender.db.AbstractDatabaseAppender
 org.apache.logging.log4j.core.appender.db.jdbc.JdbcAppender
 org.apache.logging.log4j.core.appender.rolling.action.IfAccumulatedFileSize
@@ -2757,7 +2751,6 @@ org.apache.logging.log4j.core.appender.FailoversPlugin
 org.apache.logging.log4j.core.appender.FileAppender
 org.apache.logging.log4j.core.appender.rolling.DirectFileRolloverStrategy
 org.apache.logging.log4j.core.appender.rolling.DirectWriteRolloverStrategy
-org.apache.logging.log4j.core.async.DisruptorBlockingQueueFactory
 org.apache.logging.log4j.core.appender.db.jdbc.AbstractDriverManagerConnectionSource
 org.apache.logging.log4j.core.appender.db.jdbc.DriverManagerConnectionSource
 org.apache.logging.log4j.core.appender.rolling.action.Action
@@ -2796,16 +2789,11 @@ org.apache.logging.log4j.core.filter.BurstFilter
 org.apache.logging.log4j.core.config.arbiters.Arbiter
 org.apache.logging.log4j.core.config.arbiters.ClassArbiter
 org.apache.logging.log4j.core.config.LoggerConfig
-org.apache.logging.log4j.core.async.AsyncLoggerConfig
-org.apache.logging.log4j.core.async.AsyncLoggerConfig$RootLogger
-org.apache.logging.log4j.core.async.AsyncWaitStrategyFactoryConfig
 org.apache.logging.log4j.core.appender.AbstractAppender
 org.apache.logging.log4j.core.appender.AsyncAppender
 org.apache.logging.log4j.core.config.AppenderRef
 org.apache.logging.log4j.core.config.AppendersPlugin
 org.apache.logging.log4j.core.appender.AppenderSet
-org.apache.logging.log4j.core.async.BlockingQueueFactory
-org.apache.logging.log4j.core.async.ArrayBlockingQueueFactory
 org.apache.logging.log4j.core.pattern.ThreadNamePatternConverter
 org.apache.logging.log4j.core.pattern.ThreadPriorityPatternConverter
 org.apache.logging.log4j.core.pattern.UuidPatternConverter
@@ -2886,7 +2874,6 @@ org.apache.logging.log4j.core.config.LoggerContextAware
 org.apache.logging.log4j.core.config.ConfigurationSource
 java.io.FileNotFoundException
 java.net.URISyntaxException
-org.apache.logging.log4j.core.async.AsyncLoggerConfigDelegate
 org.apache.logging.log4j.core.util.Watcher
 org.apache.logging.log4j.core.util.NanoClock
 org.apache.logging.log4j.core.layout.Encoder
