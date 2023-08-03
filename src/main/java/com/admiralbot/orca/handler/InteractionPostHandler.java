@@ -26,6 +26,9 @@ public class InteractionPostHandler implements RequestHandler<APIGatewayV2HTTPEv
     static {
         JSON.registerModule(new JavaTimeModule());
         JSON.disable(DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
+        // Possibly questionable attempt to force static processing of these classes by ObjectMapper
+        JSON.readerFor(Interaction.class);
+        JSON.writerFor(InteractionResponse.class);
     }
 
     private final InteractionAuthenticator interactionAuthenticator;

@@ -14,9 +14,7 @@ import java.util.Map;
 
 public final class EmbeddedMetrics {
 
-    // private static interface
-
-    // This is not really thread-safe, but for Lambda usage that's not a big deal.
+    // This is not really thread-safe, but for Lambda usage that's a non-issue.
     private static final MetricsLogger METRICS_LOGGER = new MetricsLogger();
     static {
         try {
