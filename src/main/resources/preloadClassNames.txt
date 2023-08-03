@@ -810,7 +810,6 @@ com.fasterxml.jackson.databind.deser.std.FactoryBasedEnumDeserializer
 com.fasterxml.jackson.databind.util.EnumResolver
 com.fasterxml.jackson.databind.introspect.MethodGenericTypeResolver
 java.lang.SafeVarargs
-jdk.proxy2.$Proxy27
 com.fasterxml.jackson.databind.deser.BasicDeserializerFactory$1
 com.fasterxml.jackson.annotation.JsonIgnoreType
 com.fasterxml.jackson.databind.deser.impl.NullsConstantProvider
@@ -930,7 +929,6 @@ com.fasterxml.jackson.databind.introspect.AnnotatedMethodMap
 com.fasterxml.jackson.annotation.JsonAnyGetter
 com.fasterxml.jackson.annotation.JsonKey
 com.admiralbot.orca.discord.interaction.ModalSubmitData
-jdk.proxy2.$Proxy22
 com.admiralbot.orca.discord.interaction.ApplicationCommandData
 com.admiralbot.orca.discord.interaction.MessageComponentData
 com.fasterxml.jackson.annotation.JsonSubTypes
@@ -938,7 +936,6 @@ com.fasterxml.jackson.annotation.JsonSubTypes$Type
 com.admiralbot.orca.discord.interaction.PingData
 com.fasterxml.jackson.annotation.JsonTypeInfo$As
 com.fasterxml.jackson.annotation.JsonTypeInfo$Id
-jdk.proxy2.$Proxy20
 com.fasterxml.jackson.databind.introspect.AnnotatedMethodCollector$MethodBuilder
 com.fasterxml.jackson.databind.introspect.MemberKey
 com.fasterxml.jackson.annotation.JsonProperty
@@ -1711,8 +1708,6 @@ com.sun.management.internal.OperatingSystemImpl$ContainerCpuTicks
 com.sun.management.internal.OperatingSystemImpl$SystemCpuTicks
 com.sun.management.internal.OperatingSystemImpl$ProcessCpuTicks
 com.sun.jmx.mbeanserver.PerInterface$MethodAndSig
-java.lang.invoke.LambdaForm$MH/0x00000008020cb800
-java.lang.invoke.LambdaForm$MH/0x00000008020d0000
 com.sun.jmx.mbeanserver.DefaultMXBeanMappingFactory$EnumMapping
 javax.management.MBeanParameterInfo
 java.lang.Thread$State
@@ -1736,8 +1731,6 @@ com.sun.jmx.mbeanserver.MBeanIntrospector$MBeanInfoMaker
 javax.management.openmbean.OpenMBeanParameterInfo
 javax.management.openmbean.OpenMBeanAttributeInfo
 javax.management.openmbean.OpenMBeanAttributeInfoSupport
-java.lang.invoke.LambdaForm$MH/0x00000008020ca000
-java.lang.invoke.LambdaForm$MH/0x00000008020ca800
 sun.reflect.generics.repository.ConstructorRepository
 sun.reflect.generics.repository.MethodRepository
 sun.reflect.generics.tree.MethodTypeSignature
@@ -1862,7 +1855,6 @@ com.amazonaws.services.lambda.runtime.LambdaRuntimeInternal
 org.apache.logging.log4j.core.config.plugins.PluginFactory
 org.apache.logging.log4j.core.config.plugins.validation.ConstraintValidator
 org.apache.logging.log4j.core.config.plugins.validation.validators.RequiredValidator
-jdk.proxy2.$Proxy13
 org.apache.logging.log4j.core.filter.AbstractFilterable$Builder
 org.apache.logging.log4j.core.appender.AbstractAppender$Builder
 com.amazonaws.services.lambda.runtime.log4j2.LambdaAppender$Builder
@@ -1949,7 +1941,6 @@ org.apache.logging.log4j.core.config.plugins.visitors.PluginVisitors
 org.apache.logging.log4j.core.util.TypeUtil
 org.apache.logging.log4j.core.config.plugins.PluginBuilderAttribute
 org.apache.logging.log4j.core.config.plugins.PluginVisitorStrategy
-jdk.proxy2.$Proxy6
 org.apache.logging.log4j.core.config.plugins.PluginBuilderFactory
 java.lang.Deprecated
 org.apache.logging.log4j.core.config.plugins.util.PluginBuilder
@@ -2038,13 +2029,9 @@ com.sun.org.apache.xerces.internal.xinclude.XIncludeMessageFormatter
 com.sun.org.apache.xerces.internal.util.IntStack
 com.sun.org.apache.xerces.internal.impl.Constants
 com.sun.org.apache.xerces.internal.impl.Constants$ArrayEnumeration
-java.lang.invoke.LambdaForm$MH/0x00000008020bcc00
 com.sun.org.apache.xerces.internal.util.XMLLocatorWrapper
-java.lang.invoke.LambdaForm$MH/0x00000008020bbc00
-java.lang.invoke.LambdaForm$MH/0x00000008020bc400
 com.sun.org.apache.xerces.internal.xinclude.XIncludeHandler
 com.sun.org.apache.xerces.internal.util.XMLSymbols
-java.lang.invoke.LambdaForm$MH/0x00000008020bb400
 com.sun.org.apache.xerces.internal.impl.XMLEntityManager$EncodingInfo
 com.sun.org.apache.xerces.internal.impl.io.UTF8Reader
 com.sun.xml.internal.stream.util.ThreadLocalBufferAllocator
@@ -2172,15 +2159,12 @@ javax.xml.parsers.FactoryFinder$1
 java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLL
 java.lang.invoke.LambdaFormEditor$1
 java.lang.invoke.BoundMethodHandle$Species_LLLLLLLL
-java.lang.invoke.LambdaForm$MH/0x00000008020ba000
 java.lang.Long$LongCache
 java.lang.invoke.MethodHandles$1
 java.lang.invoke.BoundMethodHandle$Species_LJ
 java.lang.invoke.BoundMethodHandle$Species_LLLLLL
 java.lang.invoke.BoundMethodHandle$Species_LLLLLLL
-java.lang.invoke.LambdaForm$MH/0x00000008020b9000
 java.lang.invoke.BoundMethodHandle$Species_LLLLL
-java.lang.invoke.LambdaForm$MH/0x00000008020b8800
 javax.xml.parsers.DocumentBuilderFactory
 javax.xml.parsers.FactoryFinder
 jdk.xml.internal.SecuritySupport
@@ -2587,7 +2571,6 @@ org.apache.logging.log4j.core.util.ReflectionUtil
 java.util.MissingResourceException
 org.apache.logging.log4j.core.impl.ContextDataInjectorFactory
 org.apache.logging.log4j.core.ContextDataInjector
-java.lang.invoke.LambdaForm$DMH/0x0000000802098800
 java.util.LinkedHashMap$LinkedEntrySet
 java.util.LinkedHashMap$LinkedEntryIterator
 org.apache.logging.log4j.core.util.AbstractWatcher
@@ -2886,7 +2869,6 @@ org.apache.logging.log4j.core.config.xml.XmlConfigurationFactory
 org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilderFactory
 java.util.TreeMap$EntrySet
 java.util.TreeMap$EntryIterator
-java.lang.invoke.LambdaForm$DMH/0x0000000802024800
 org.apache.logging.log4j.core.config.plugins.processor.PluginEntry
 java.io.DataInputStream
 org.apache.logging.log4j.core.config.plugins.util.ResolverUtil$Test
@@ -2990,7 +2972,6 @@ java.util.regex.Pattern$1
 java.util.concurrent.ConcurrentSkipListMap$KeySet
 java.util.concurrent.ConcurrentSkipListMap$Iter
 java.util.concurrent.ConcurrentSkipListMap$KeyIterator
-java.lang.invoke.LambdaForm$DMH/0x0000000802014800
 org.apache.logging.log4j.util.PropertySource$Util
 java.util.regex.ASCII
 java.util.regex.Pattern$SliceI
@@ -3011,13 +2992,8 @@ java.util.stream.ForEachOps$ForEachOp
 java.util.stream.ForEachOps$ForEachOp$OfRef
 org.apache.logging.log4j.util.OsgiServiceLocator
 java.lang.invoke.MethodHandleImpl$WrappedMember
-java.lang.invoke.LambdaForm$MH/0x0000000802013000
 java.lang.invoke.BoundMethodHandle$Species_LLLL
 java.util.Collections$CopiesList
-java.lang.invoke.LambdaForm$MH/0x0000000802012800
-java.lang.invoke.LambdaForm$DMH/0x0000000802011800
-java.lang.invoke.LambdaForm$DMH/0x0000000802010800
-java.lang.invoke.LambdaForm$DMH/0x0000000802011000
 java.lang.invoke.MethodHandleImpl$CasesHolder
 java.lang.invoke.MethodHandleImpl$LoopClauses
 java.lang.invoke.MethodHandleImpl$ArrayAccess
