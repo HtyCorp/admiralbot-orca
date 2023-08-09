@@ -47,7 +47,6 @@ public class InteractionPostLambdaHandler extends DelegateHandler<APIGatewayV2HT
         try (var lines = Files.lines(Paths.get(classNamesUrl.toURI()))) {
             lines.forEach(name -> {
                 try {
-                    System.out.println("About to try loading class: " + name);
                     Class.forName(name);
                 } catch (Exception e) {
                     // This has the potential to create a lot of log pollution, but it would only be in version-publish streams, so it's limited.

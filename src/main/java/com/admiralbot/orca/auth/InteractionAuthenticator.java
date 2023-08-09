@@ -32,15 +32,12 @@ public class InteractionAuthenticator {
             return false;
         }
 
-        log.trace("Starting signature validation");
         var message = (timestamp + requestBody).getBytes(UTF_8);
         var validSignature = discordAppKeySet.stream().anyMatch(key -> authenticateMessage(signatureHex, key, message));
 
-        log.trace("Starting timestamp validation");
         // Discord doesn't strictly require this, but not validating clock skew on timestamp feels weird.
         var validTimestamp = validateTimestamp(timestamp);
 
-        log.trace("Starting final metric publish");
         booleanMetric("ValidSignature", Map.of(), validSignature);
         booleanMetric("ValidTimestamp", Map.of(), validTimestamp);
 
