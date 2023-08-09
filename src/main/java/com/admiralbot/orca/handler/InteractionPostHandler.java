@@ -28,8 +28,8 @@ public class InteractionPostHandler implements RequestHandler<APIGatewayV2HTTPEv
         JSON.disable(DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
         // Slightly less questionable attempt to force static processing of these classes by ObjectMapper.
         // `can(De)serialize` should force creation/caching of value (de)serializer in ObjectMapper.
-        // JSON.canDeserialize(JSON.getTypeFactory().constructType(Interaction.class));
-        // JSON.canSerialize(InteractionResponse.class);
+        JSON.canDeserialize(JSON.getTypeFactory().constructType(Interaction.class));
+        JSON.canSerialize(InteractionResponse.class);
     }
 
     private final InteractionAuthenticator interactionAuthenticator;
