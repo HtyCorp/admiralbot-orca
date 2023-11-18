@@ -2,7 +2,7 @@ plugins {
     id("java")
     id("application")
     // Officially endorsed Lombok plugin for Gradle
-    id("io.freefair.lombok") version "8.0.1"
+    id("io.freefair.lombok") version "8.4"
 }
 
 group = "com.admiralbot"
